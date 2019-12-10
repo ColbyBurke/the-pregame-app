@@ -10,6 +10,7 @@
 
 # production
 /build
+/server/creds.js
 
 # misc
 .DS_Store
