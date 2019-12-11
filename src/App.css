@@ -1,5 +1,4 @@
 /*HOME*/
-
 .image-home {
   margin: 0 auto;
   padding: 50px;
@@ -24,6 +23,42 @@
 .featuredEvents-container {
   width: 500px;
 
+}
+
+/*EVENT PAGE*/
+.displayEvents-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.displayEvents-placeholder{
+  width: 750px;
+}
+
+/*EVENT DETAILS*/
+.eventDetails-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 600px;
+  align-items: center;
+  padding: 20px;
+}
+
+/*DISPLAY GROUPS*/
+.displayGroups-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.displayGroups-placeholder{
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 600px;
+  border: 1px solid black;
+padding: 10px;
 }
 /*FOOTER*/
 .footer-container {

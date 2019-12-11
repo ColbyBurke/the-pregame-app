@@ -161,7 +161,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar>
           <IconButton
             edge="start"
@@ -189,7 +189,7 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Typography className={classes.title} variant="h5" style={{paddingLeft: "600px"}}>Event</Typography>
+          <Typography className={classes.title} variant="h5" style={{paddingLeft: "400px"}}>Event</Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
