@@ -60,6 +60,69 @@
   border: 1px solid black;
 padding: 10px;
 }
+/*CREATE GROUPS*/
+.form-container form{
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container{
+  margin: 0 auto;
+  width: 800px;
+}
+
+.form-container h1{
+  text-align: center;
+}
+
+.input-container{
+  padding-bottom: 20px;
+}
+/*CREATE GROUP BOTTOM*/
+.go {
+  margin-top: 10px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 100%;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+.go span {
+  position: relative;
+  z-index: 2;
+}
+.go:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #3f51b5;
+  transition: all .35s;
+}
+.go:hover{
+  color: #fff;
+  
+}
+.go:hover:after{
+  width: 100%;
+  border-radius: 100%;
+}
+
+
 /*FOOTER*/
 .footer-container {
   background-color: #3f51b5;

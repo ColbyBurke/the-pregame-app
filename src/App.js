@@ -7,6 +7,9 @@ import Footer from "./components/Footer"
 import DisplayEvents from './components/DisplayEvents'
 import EventDetails from './components/EventDetails'
 import DisplayGroups from './components/DisplayGroups';
+import CreateEvents from './components/CreateEvents'
+import CreateGroups from './components/CreateGroups'
+
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
         <Route exact path='/events' component={DisplayEvents}></Route>
         <Route path='/events/details' component={EventDetails}></Route>
         <Route exact path='/groups' component={DisplayGroups}></Route>
+        <Route exact path='/events/create' component={CreateEvents}></Route>
+        <Route exact path='/groups/create' component={CreateGroups}></Route>
         </Switch>
         <Footer />
      </BrowserRouter>
