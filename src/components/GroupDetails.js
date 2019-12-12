@@ -16,12 +16,12 @@ const initialData = {
   error: null
 };
 
-function EventDetails(props) {
+function GroupDetails(props) {
   console.log(props);
   const [data, dispatch] = useReducer(dataReducer, initialData);
   useEffect(() => {
     axios
-      .get("http://localhost:2500/events")
+      .get("http://localhost:2500/groups")
       .then(response => {
         console.log(response);
         dispatch({ type: "SET_LIST", list: response.data });
@@ -31,108 +31,81 @@ function EventDetails(props) {
       });
   }, []);
   return (
-    <div className="event-details-container">
+    <div className="group-details-container">
       <h2>
         {" "}
         {data.list
           .filter(element => element._id === props.match.params.id)
-          .map(event => {
+          .map(group => {
             return (
-              <div key={event._id}>
+              <div key={group._id}>
                 <TextField
-                  id="event-details-name"
+                  id="group-details-name"
                   label="Name"
-                  defaultValue={event.name}
+                  defaultValue={group.name}
                   InputProps={{
                     readOnly: true
                   }}
                   variant="outlined"
                 />
                 <TextField
-                  id="event-details-date"
+                  id="group-details-comments"
                   label="Comments"
-                  defaultValue={event.date}
+                  defaultValue={group.comments}
                   InputProps={{
                     readOnly: true
                   }}
                   variant="outlined"
                 />
                 <TextField
-                  id="event-details-location"
-                  label="Location"
-                  defaultValue={event.location}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="event-details-comments"
-                  label="Comments"
-                  defaultValue={event.comments}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="event-details-images"
-                  label="Images"
-                  defaultValue={event.images}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="event-details-group"
-                  label="Group"
-                  defaultValue={event.group}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="event-details-age"
-                  label="Age"
-                  defaultValue={event.age}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="event-details-rating"
-                  label="Rating"
-                  defaultValue={event.rating}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="event-details-description"
-                  label="Description"
-                  defaultValue={event.description}
+                  id="group-details-events"
+                  label="Events"
+                  defaultValue={group.events}
                   InputProps={{
                     readOnly: true
                   }}
                   variant="outlined"
                 />
                                 <TextField
-                  id="event-details-rsvpyes"
-                  label="Going"
-                  defaultValue={event.RSVPYES}
+                  id="group-details-members"
+                  label="Members"
+                  defaultValue={group.members}
                   InputProps={{
                     readOnly: true
                   }}
                   variant="outlined"
                 />
-                                              <TextField
-                  id="event-details-rsvpno"
-                  label="Not Going"
-                  defaultValue={event.RSVPNO}
+                                <TextField
+                  id="group-details-ageRange"
+                  label="Age Range"
+                  defaultValue={group.age}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  variant="outlined"
+                />
+                                <TextField
+                  id="group-details-rating"
+                  label="Rating"
+                  defaultValue={group.rating}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  variant="outlined"
+                />
+                                                <TextField
+                  id="group-details-groupLeader"
+                  label="Group Leader"
+                  defaultValue={group.groupLeader}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  variant="outlined"
+                />
+                                                <TextField
+                  id="group-details-description"
+                  label="Description"
+                  defaultValue={group.description}
                   InputProps={{
                     readOnly: true
                   }}
@@ -146,4 +119,4 @@ function EventDetails(props) {
   );
 }
 
-export default EventDetails;
+export default GroupDetails;

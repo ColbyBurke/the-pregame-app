@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, {  useEffect, useReducer } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
@@ -48,7 +48,7 @@ function GetGroups() {
         {data.list.map(group => {
           return (
             <div key={group._id}>
-              <Link to="/events/details">details</Link>
+              <Link to={`/group/${group._id}`}>details</Link>
               <TextField
                 id="outlined-read-only-input"
                 label="Name"

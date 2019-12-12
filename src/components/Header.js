@@ -8,12 +8,12 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -164,9 +164,9 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static" >
         <Toolbar>
 
-          <Typography className={classes.title} variant="h6" noWrap>
+        <Link className="link"  to="/"><Typography className={classes.title} variant="h6" noWrap>
             The Pregame App
-          </Typography>
+          </Typography></Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -182,7 +182,8 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px" }}>Event</Typography>
+          <Link className="link"  to="/events"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px"}}>Event</Typography></Link>
+          <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px" }}>Group</Typography></Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 

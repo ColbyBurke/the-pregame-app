@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, {  useEffect, useReducer } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
@@ -48,7 +48,7 @@ function GetEvents() {
         {data.list.map(event => {
           return (
             <div key={event._id}>
-              <Link to="/events/details">details</Link>
+              <Link to={`/event/${event._id}`}>details</Link>
               <TextField
                 id="outlined-read-only-input"
                 label="Name"
