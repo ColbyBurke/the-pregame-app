@@ -2,15 +2,22 @@ import React from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
+import { Card, TextField } from '@material-ui/core'
+
 
 export default function DisplayGroups() {
   return (
     <div className="displayGroups-container">
-      <h3>Search for events using filters like age, upcoming, or popular</h3>
-      <FilterDropdown></FilterDropdown>
-      <InputBar></InputBar>
-      <div className="displayGroups-placeholder">
+      <br />
+      <Card style={{
+        width: '540px'
+      }}>
+        <h3>Find Your Group :/</h3>
+        <FilterDropdown></FilterDropdown>
+        <InputBar></InputBar>
+      </Card>
+      <br />
+      <Card className="displayGroups-placeholder">
         <h1>Good group</h1>
         <Link to="/events/details">details</Link>
         <TextField
@@ -76,8 +83,9 @@ export default function DisplayGroups() {
           }}
           variant="outlined"
         />
-      </div>
-      <div className="displayGroups-placeholder">
+      </Card>
+      <br />
+      <Card className="displayGroups-placeholder">
         <h1>Good group</h1>
         <Link to="/events/details">details</Link>
         <TextField
@@ -143,7 +151,7 @@ export default function DisplayGroups() {
           }}
           variant="outlined"
         />
-      </div>
+      </Card>
     </div>
   );
 }

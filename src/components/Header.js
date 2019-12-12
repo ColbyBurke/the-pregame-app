@@ -163,23 +163,16 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static" >
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+
           <Typography className={classes.title} variant="h6" noWrap>
             The Pregame App
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
-              
+
             </div>
-           
+
             <InputBase
               placeholder="Search Group"
               classes={{
@@ -189,19 +182,11 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Typography className={classes.title} variant="h5" style={{paddingLeft: "400px"}}>Event</Typography>
+          <Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px" }}>Event</Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
+
             <IconButton
               edge="end"
               aria-label="account of current user"
