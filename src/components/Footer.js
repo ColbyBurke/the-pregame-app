@@ -1,10 +1,20 @@
 import React from "react"
+import { Card } from '@material-ui/core'
+
+
 
 function Footer() {
     return (
-        <div className="footer-container">
-            <p>&copy;Web page made by JRS students</p>
-        </div>
+        <Card elevation='0' style={{
+            borderRadius: '0px'
+        }}>
+            <div className="footer-container">
+                <p style={{
+                    paddingLeft: '1.5%',
+                    paddingTop: '1.4%'
+                }}>&copy;Web page made by JRS students</p>
+            </div>
+        </Card>
     )
 }
 
