@@ -11,7 +11,7 @@ const EventsSchema = new mongoose.Schema({
     },
     location:{
         type: String,
-        required: false
+        required: true
     },
     comments:{
         type:Array,
@@ -19,11 +19,19 @@ const EventsSchema = new mongoose.Schema({
     },
     images:{
         type: Array,
-        required: false
+        required: true
     },
     group:{
         type: String,
         required: true
+    },
+    age:{
+        type: String,
+        required: true
+    },
+    rating:{
+        type: Array,
+        required: false
     },
     description:{
         type: String,

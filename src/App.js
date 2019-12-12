@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import { Router, Route, Switch, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer"
-import DisplayEvents from './components/DisplayEvents'
+import GetEvents from './components/GetEvents'
 import EventDetails from './components/EventDetails'
 import GetGroups from './components/GetGroups';
 import CreateEvents from './components/CreateEvents'
@@ -25,7 +25,7 @@ function App() {
         <Header />
         <Switch>
         <Route exact path='/' component={Home}/>
-        <Route exact path='/events' component={DisplayEvents}></Route>
+        <Route exact path='/events' component={GetEvents}></Route>
         <Route path='/events/details' component={EventDetails}></Route>
         <Route exact path='/groups' component={GetGroups}></Route>
         <Route exact path='/events/create' component={CreateEvents}></Route>

@@ -7,7 +7,7 @@ const GroupsSchema = new mongoose.Schema({
     },
     members:{
         type: Array,
-        required: false
+        required: true
     },
     rating:{
         type: Array,

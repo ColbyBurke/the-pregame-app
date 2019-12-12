@@ -1,48 +1,105 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { TextField } from '@material-ui/core'
+import axios from 'axios'
+
 
 
 
 function CreateGroups() {
-    return (
-        <div className="form-container createGroup">
+    const [name, setName] = useState("")
+    const [comments, setComments] = useState([])
+    const [events, setEvents] = useState([])
+    const [groupLeader, setGroupLeader] = useState("")
+    const [description, setDescription] = useState("")
+    const [age, setAge] = useState("")
+    const handlePost = (
+        name,
+        comments,
+        events,
+        groupLeader,
+        description,
+        age
+    ) => {
+        axios.post("http://localhost:2500/groups", {
+            name: name,
+            comments: comments,
+            events: events,
+            groupLeader: groupLeader,
+            description: description,
+            age: age
+        })
+    }
+        return (
 
-            <h1>Create your Awesome Group</h1>
-            <form>
-                <div className="input-container">
+            <div className="form-container createGroup">
 
-                    <br></br>
-                    <TextField required label="Group Name" id="group-name" style={{ width: "500px" }}>
+                <h1>Create your Awesome Group</h1>
+                <form onSubmit= {e => {
+                e.preventDefault()
+                handlePost(
+                    name,
+                    comments,
+                    events,
+                    groupLeader,
+                    description,
+                    age
+                )
+            }}>
+                    <div className="input-container">
 
-                    </TextField>
-                </div>
+                        <br></br>
+                        <TextField required label="Group Name" id="group-name" style={{ width: "500px" }} onChange={e => setName(e.target.value)}>
+
+                        </TextField>
+                    </div>
 
 
-                <div className="input-container">
+                    <div className="input-container">
 
 
-                    <TextField required label="Age Range" id="group-ageRange" style={{ width: "500px" }}>
+                        <TextField required label="Comments" id="group-comments" style={{ width: "500px" }} onChange={e => setComments(e.target.value)}>
 
-                    </TextField>
-                </div>
+                        </TextField>
+                    </div>
 
 
-                <div className="input-container">
+                    <div className="input-container">
 
-                    <br></br>
-                    <TextField required label="Description" id="group-description" rows="15" style={{ width: "500px" }} multiline variant="outlined"  >
+                        <br></br>
+                        <TextField required label="Events" id="group-events" rows="15" style={{ width: "500px" }} multiline variant="outlined" onChange={e => setEvents(e.target.value)} >
 
-                    </TextField>
-                </div>
-                <div className="input-container">
+                        </TextField>
+                    </div>
+                    <div className="input-container">
 
-                    <br></br>
-                    <button className="go"><span>Go</span></button>
-                </div>
-            </form>
+                        <br></br>
+                        <TextField required label="Group Leader" id="group-groupLeader" rows="15" style={{ width: "500px" }} multiline variant="outlined"  onChange={e => setGroupLeader(e.target.value)}>
 
-        </div>
-    )
-}
+                        </TextField>
+                    </div>
+                    <div className="input-container">
 
-export default CreateGroups
+                        <br></br>
+                        <TextField required label="Description" id="group-description" rows="15" style={{ width: "500px" }} multiline variant="outlined" onChange={e => setDescription(e.target.value)} >
+
+                        </TextField>
+                    </div>
+                    <div className="input-container">
+
+                        <br></br>
+                        <TextField required label="Age Range" id="group-age" rows="15" style={{ width: "500px" }} multiline variant="outlined"  onChange={e => setAge(e.target.value)}>
+
+                        </TextField>
+                    </div>
+                    <div className="input-container">
+
+                        <br></br>
+                        <button className="go"><span>Go</span></button>
+                    </div>
+                </form>
+
+            </div>
+        )
+    }
+
+    export default CreateGroups
