@@ -5,7 +5,7 @@ import { Card } from '@material-ui/core'
 
 function Footer() {
     return (
-        <Card elevation='0' style={{
+        <Card  style={{
             borderRadius: '0px'
         }}>
             <div className="footer-container">

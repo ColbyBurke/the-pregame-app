@@ -2,15 +2,14 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header'
 import Home from './components/Home'
-import { Router, Route, Switch, BrowserRouter } from "react-router-dom";
+import {  Route, Switch, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer"
 import GetEvents from './components/GetEvents'
 import EventDetails from './components/EventDetails'
 import GetGroups from './components/GetGroups';
 import CreateEvents from './components/CreateEvents'
 import CreateGroups from './components/CreateGroups'
-import {useEffect, useState} from 'react'
-import axios from 'axios'
+import GroupDetails from './components/GroupDetails'
 
 
 
@@ -30,6 +29,7 @@ function App() {
         <Route exact path='/groups' component={GetGroups}></Route>
         <Route exact path='/events/create' component={CreateEvents}></Route>
         <Route exact path='/groups/create' component={CreateGroups}></Route>
+        <Route exact path='/group/:id' component={GroupDetails}></Route>
         </Switch>
         <Footer />
      </BrowserRouter>

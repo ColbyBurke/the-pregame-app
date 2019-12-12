@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, {  useEffect, useReducer } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
