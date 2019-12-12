@@ -1,17 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TextField } from '@material-ui/core'
+import axios from 'axios'
 
 
 
 function CreateEvents() {
+    const [name, setName]=useState("")
+    const [group, setGroup]=useState("")
+    const [date, setDate]=useState("")
+    const [age, setAge]=useState("")
+    const [location, setLocation]=useState("")
+    const [images, setImages]=useState("")
+    const [description, setDescription]=useState("")
+    const handlePost = (
+            name,
+            group,
+            date,
+            age,
+            location,
+            images,
+            description
+    ) => {
+        axios.post("http://localhost:2500/events", {
+            name:name,
+            group:group,
+            date:date,
+            age:age,
+            location:location,
+            images:images,
+            description:description
+        })
+    }
     return (
         <div className="form-container">
             <h1>Create your Awesome Event</h1>
-            <form>
+            <form onSubmit= {e => {
+                e.preventDefault()
+                handlePost(
+                    name,
+                    group,
+                    date,
+                    age,
+                     location,
+            images,
+            description
+                )
+            }}>
                 <div className="input-container">
             
             <br></br>
-                    <TextField required label="Event Name" id="group-name" style={{width:"500px"}}>
+                    <TextField required label="Event Name" id="event-name" style={{width:"500px"}} onChange={e => setName(e.target.value)}>
+
+                    </TextField>
+                </div>
+                <div className="input-container">
+            
+            <br></br>
+                    <TextField required label="Group" id="event-group" style={{width:"500px"}} onChange={e => setGroup(e.target.value)}>
 
                     </TextField>
                 </div>
@@ -19,16 +64,23 @@ function CreateEvents() {
                 <div className="input-container">
              
           
-             <TextField required label="Date"id="group-date" style={{width:"500px"}}>
+             <TextField required label="Date"id="event-date" style={{width:"500px"}} onChange={e => setDate(e.target.value)}>
 
              </TextField>
          </div>
+         <div className="input-container">
+            
+           
+                    <TextField required label="Age Range" id="event-age" style={{width:"500px"}} onChange={e => setAge(e.target.value)}>
+
+                    </TextField>
+                </div>
 
 
                 <div className="input-container">
              
           
-                    <TextField required label="Location"id="group-location" style={{width:"500px"}}>
+                    <TextField required label="Location"id="event-location" style={{width:"500px"}} onChange={e => setLocation(e.target.value)}>
 
                     </TextField>
                 </div>
@@ -36,7 +88,7 @@ function CreateEvents() {
                 <div className="input-container">
              
           
-             <TextField required label="Images"id="group-images" style={{width:"500px"}}>
+             <TextField required label="Images"id="event-images" style={{width:"500px"}} onChange={e => setImages(e.target.value)}>
 
              </TextField>
          </div>
@@ -46,7 +98,7 @@ function CreateEvents() {
                 <div className="input-container">
                 
             <br></br>
-                    <TextField required label="Description" id="group-description" rows="15" style={{width:"500px"}} multiline variant="outlined"  >
+                    <TextField required label="Description" id="event-description" rows="15" style={{width:"500px"}} multiline variant="outlined" onChange={e => setDescription(e.target.value)} >
 
                     </TextField>
                 </div>
