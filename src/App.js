@@ -13,6 +13,7 @@ import GroupDetails from './components/GroupDetails'
 
 
 
+
 function App() { 
 
     
@@ -30,6 +31,7 @@ function App() {
         <Route exact path='/events/create' component={CreateEvents}></Route>
         <Route exact path='/groups/create' component={CreateGroups}></Route>
         <Route exact path='/group/:id' component={GroupDetails}></Route>
+        <Route exact path='/event/:id' component={EventDetails}></Route>
         </Switch>
         <Footer />
      </BrowserRouter>
