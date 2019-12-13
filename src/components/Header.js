@@ -183,7 +183,7 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <Link className="link"  to="/events"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px"}}>Event</Typography></Link>
-          <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px" }}>Group</Typography></Link>
+          <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "200px" }}>Group</Typography></Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 

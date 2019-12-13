@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import axios from "axios";
 import { TextField } from "@material-ui/core";
+import Map from "./Map"
 
 export const dataReducer = (state, action) => {
   if (action.type === "SET_ERROR") {
@@ -57,15 +58,8 @@ function EventDetails(props) {
                   }}
                   variant="outlined"
                 />
-                <TextField
-                  id="event-details-location"
-                  label="Location"
-                  defaultValue={event.location}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
+               <Map location={event.location}/>
+
                 <TextField
                   id="event-details-comments"
                   label="Comments"
@@ -75,15 +69,15 @@ function EventDetails(props) {
                   }}
                   variant="outlined"
                 />
-                <TextField
-                  id="event-details-images"
-                  label="Images"
-                  defaultValue={event.images}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
+                
+                 
+                    <img src={
+                      event.images[0]
+                    } alt="party"/>
+                  
+               
+            
+               
                 <TextField
                   id="event-details-group"
                   label="Group"

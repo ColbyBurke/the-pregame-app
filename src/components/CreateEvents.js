@@ -12,6 +12,15 @@ function CreateEvents() {
     const [location, setLocation]=useState("")
     const [images, setImages]=useState("")
     const [description, setDescription]=useState("")
+    const handleImage = e => {
+        let input = e.target;
+        for (let i = 0; i < input.files.length; i++) {
+          let reader = new FileReader();
+          reader.onload = b =>
+            setImages(images.concat(b.target.result));
+          reader.readAsDataURL(input.files[i]);
+        }
+      };
     const handlePost = (
             name,
             group,
@@ -88,9 +97,15 @@ function CreateEvents() {
                 <div className="input-container">
              
           
-             <TextField required label="Images"id="event-images" style={{width:"500px"}} onChange={e => setImages(e.target.value)}>
-
-             </TextField>
+            
+             <input
+                id="file-input"
+                type="file"
+                onChange={e => handleImage(e)}
+                multiple
+              ></input>
+              <div id="label">Media</div>
+    
          </div>
          
     
