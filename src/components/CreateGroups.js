@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
+import AlertDialog from './AlertDialog'
 
 
 
@@ -12,6 +13,7 @@ function CreateGroups() {
     const [groupLeader, setGroupLeader] = useState("")
     const [description, setDescription] = useState("")
     const [age, setAge] = useState("")
+    const [clicked, setClicked] = useState(false)
     const handlePost = (
         name,
         comments,
@@ -44,6 +46,7 @@ function CreateGroups() {
                     description,
                     age
                 )
+                setClicked(true)
             }}>
                     <div className="input-container">
 
@@ -94,7 +97,7 @@ function CreateGroups() {
                     <div className="input-container">
 
                         <br></br>
-                        <button className="go"><span>Go</span></button>
+                        <AlertDialog props={{name, comments, events, groupLeader, description, age, page: 'group', clicked}}/>
                     </div>
                 </form>
 

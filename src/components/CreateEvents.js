@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
+import AlertDialog from './AlertDialog'
 
 
 
@@ -12,6 +13,7 @@ function CreateEvents() {
     const [location, setLocation]=useState("")
     const [images, setImages]=useState("")
     const [description, setDescription]=useState("")
+    const [clicked, setClicked] = useState(false)
     const handleImage = e => {
         let input = e.target;
         for (let i = 0; i < input.files.length; i++) {
@@ -54,6 +56,7 @@ function CreateEvents() {
             images,
             description
                 )
+                setClicked(true)
             }}>
                 <div className="input-container">
             
@@ -120,7 +123,13 @@ function CreateEvents() {
                 <div className="input-container">
                 
             <br></br>
-                    <button className="go"><span>Go</span></button>
+            <AlertDialog props={{name, group,            date,
+            age,
+            location,
+            images,
+            description,
+            page: 'event', clicked }}></AlertDialog>
+                    {/* <button className="go" ><span>Go</span></button> */}
                 </div>
             </form>
         </div>
