@@ -14,6 +14,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link} from 'react-router-dom'
+import FreeSolo from './FreeSolo'
+
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -167,21 +169,12 @@ export default function PrimarySearchAppBar() {
         <Link className="link"  to="/"><Typography className={classes.title} variant="h6" noWrap>
             The Pregame App
           </Typography></Link>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          
 
-            </div>
+            
 
-            <InputBase
-              placeholder="Search Group"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+           <FreeSolo></FreeSolo>
+         
           <Link className="link"  to="/events"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px"}}>Event</Typography></Link>
           <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "200px" }}>Group</Typography></Link>
           <div className={classes.grow} />
