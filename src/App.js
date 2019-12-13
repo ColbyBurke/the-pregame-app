@@ -10,13 +10,18 @@ import GetGroups from './components/GetGroups';
 import CreateEvents from './components/CreateEvents'
 import CreateGroups from './components/CreateGroups'
 import GroupDetails from './components/GroupDetails'
+import { useAuth0 } from "./react-auth0-spa";
 
 
 
 
 function App() { 
 
-    
+  const { loading } = useAuth0();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   
   
   return (
