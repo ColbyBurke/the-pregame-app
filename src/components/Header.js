@@ -15,6 +15,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link} from 'react-router-dom'
 import FreeSolo from './FreeSolo'
+import NavBar from './NavBar'
 
 
 const useStyles = makeStyles(theme => ({
@@ -179,8 +180,18 @@ export default function PrimarySearchAppBar() {
           <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "200px" }}>Group</Typography></Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-
-
+          <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <NavBar/>
+              
+            </IconButton>
+              
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -189,7 +200,8 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle/>
+              
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -204,7 +216,9 @@ export default function PrimarySearchAppBar() {
             </IconButton>
           </div>
         </Toolbar>
+        
       </AppBar>
+      
       {renderMobileMenu}
       {renderMenu}
     </div>
