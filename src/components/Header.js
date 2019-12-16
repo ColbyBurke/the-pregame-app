@@ -116,8 +116,7 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <NavBar></NavBar>
     </Menu>
   );
 
@@ -157,7 +156,7 @@ export default function PrimarySearchAppBar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <Link to='/profile'><p>Profile</p></Link>
       </MenuItem>
     </Menu>
   );
@@ -179,19 +178,7 @@ export default function PrimarySearchAppBar() {
           <Link className="link"  to="/events"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px"}}>Event</Typography></Link>
           <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "200px" }}>Group</Typography></Link>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-          <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <NavBar/>
-              
-            </IconButton>
-              
+          <div className={classes.sectionDesktop}>                            
             <IconButton
               edge="end"
               aria-label="account of current user"
