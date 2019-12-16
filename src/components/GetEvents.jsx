@@ -1,4 +1,4 @@
-import React, {  useEffect, useReducer } from "react";
+import React, {  useEffect, useReducer, useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
@@ -18,7 +18,10 @@ const initialData = {
   list: [],
   error: null
 };
-function GetEvents() {
+
+function GetEvents() { 
+   const [filterValue, setFilterValue] = useState('')
+   const [input, setInput] = useState('')
   const [data, dispatch] = useReducer(dataReducer, initialData);
   useEffect(() => {
     axios
@@ -31,6 +34,14 @@ function GetEvents() {
         dispatch({ type: "SET_ERROR" });
       });
   }, []);
+  const callbackFromDropdown = val => {
+    setFilterValue(val);
+  };
+  const callbackFromInputBar = val => {
+    setInput(val);
+  };
+  console.log(input);
+  
   return (
     <div className="GetEvents-container">
       <Card
@@ -39,13 +50,22 @@ function GetEvents() {
         }}
       >
         <h3>Find Your Event :/</h3>
-        <FilterDropdown></FilterDropdown>
-        <InputBar></InputBar>
+        <FilterDropdown parentCallback={callbackFromDropdown}></FilterDropdown>
+        <InputBar parentCallback={callbackFromInputBar}></InputBar>
       </Card>
       <br />
       <Card className="GetEvents-placeholder">
         <br />
-        {data.list.map(event => {
+        {data.list.filter(event => {
+          if(filterValue === 'age'){
+            if(parseInt(event.age) > parseInt(input)){
+              return event
+            }
+          }
+          else{
+            return event
+          }
+        }).map(event => {
           return (
             <div key={event._id}>
               <Link to={`/event/${event._id}`}>details</Link>

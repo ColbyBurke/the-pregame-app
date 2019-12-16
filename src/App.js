@@ -38,7 +38,7 @@ function App() {
         <Route exact path='/groups' component={GetGroups}></Route>
         <PrivateRoute exact path='/events/create' component={CreateEvents}></PrivateRoute>
         <PrivateRoute path="/external-api" component={ExternalApi} />
-        <Route exact path='/groups/create' component={CreateGroups}></Route>
+        <PrivateRoute exact path='/groups/create' component={CreateGroups}></PrivateRoute>
         <Route exact path='/group/:id' component={GroupDetails}></Route>
         <Route exact path='/event/:id' component={EventDetails}></Route>
         </Switch>

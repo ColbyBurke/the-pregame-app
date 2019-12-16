@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleSelect() {
+export default function SimpleSelect({...props}) {
   const classes = useStyles();
   const [filter, setFilter] = React.useState('');
 
@@ -25,8 +25,9 @@ export default function SimpleSelect() {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const handleChange = event => {
-    setFilter(event.target.value);
+  const handleChange = e => {
+    setFilter(e.target.value);
+    props.parentCallback(e.target.value)
   };
 
   return (
