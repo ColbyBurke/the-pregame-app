@@ -11,7 +11,9 @@ import CreateEvents from './components/CreateEvents'
 import CreateGroups from './components/CreateGroups'
 import GroupDetails from './components/GroupDetails'
 import { useAuth0 } from "./react-auth0-spa";
-
+import ExternalApi from './components/ExternalApi'
+import PrivateRoute from './components/PrivateRoute'
+import Profile from './components/Profile'
 
 
 
@@ -32,8 +34,10 @@ function App() {
         <Route exact path='/' component={Home}/>
         <Route exact path='/events' component={GetEvents}></Route>
         <Route path='/events/details' component={EventDetails}></Route>
+        <PrivateRoute path="/profile" component={Profile} />
         <Route exact path='/groups' component={GetGroups}></Route>
-        <Route exact path='/events/create' component={CreateEvents}></Route>
+        <PrivateRoute exact path='/events/create' component={CreateEvents}></PrivateRoute>
+        <PrivateRoute path="/external-api" component={ExternalApi} />
         <Route exact path='/groups/create' component={CreateGroups}></Route>
         <Route exact path='/group/:id' component={GroupDetails}></Route>
         <Route exact path='/event/:id' component={EventDetails}></Route>
