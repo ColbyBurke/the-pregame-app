@@ -18,6 +18,16 @@ export default function AlertDialog({props}) {
     props.handleLeaveGroup(props.groupId, props.email)
     setOpen(true)
   }
+  const handleCreateGroup = () => {
+    props.handlePost( 
+      props.name,
+      props.comments,
+      props.events,
+      props.groupLeader,
+      props.description,
+      props.age)
+    setOpen(true)
+  }
   const handleClickOpen = () => {
     props.handlePutGoing(props.eventId, props.email)
     setOpen(true);
@@ -115,6 +125,33 @@ if(props.page === 'event'){
           <DialogContentText id="alert-dialog-description">
             {props.page === 'event' && 'Event created!'}
             {props.page === 'group' && 'Group created!'}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
+if(props.page === 'createGroup'){
+  return (
+    <div>
+      <Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateGroup} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.group.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
+        Submit
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title"></DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Group Created!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
