@@ -128,7 +128,7 @@ function CreateEvents() {
             location,
             images,
             description,
-            page: 'event', clicked }}></AlertDialog>
+            page: 'event', clicked, handlePost }}></AlertDialog>
                     {/* <button className="go" ><span>Go</span></button> */}
                 </div>
             </form>

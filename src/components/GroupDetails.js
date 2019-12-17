@@ -49,7 +49,7 @@ function GroupDetails(props) {
   });}
   const handleLeaveGroup = (id, email) => {
     axios.put(`http://localhost:2500/group/${id}`,
-    {members: member.splice(1, email, '')}
+    {members: member.splice(1, email)}
   ).then(function(response) {
     console.log(response);
   }).catch(function(error) {

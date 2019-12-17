@@ -3,7 +3,7 @@ export default function Map({location}){
     console.log(location);
     return (
         <div
-              class="mapouter"
+              className="mapouter"
               style={{
                 position: "relative",
                 textAlign: "right",
@@ -14,7 +14,7 @@ export default function Map({location}){
               }}
             >
               <div
-                class="gmap_canvas"
+                className="gmap_canvas"
                 style={{
                   overflow: "hidden",
                   background: "none!important",
@@ -27,10 +27,10 @@ export default function Map({location}){
                   height="500"
                   id="gmap_canvas"
                   src={`https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                  frameborder="0"
+                  frameBorder="0"
                   scrolling="no"
-                  marginheight="0"
-                  marginwidth="0"
+                  marginHeight="0"
+                  marginWidth="0"
                 ></iframe>
               </div>
             </div>
