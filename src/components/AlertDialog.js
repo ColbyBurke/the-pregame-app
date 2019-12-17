@@ -10,7 +10,14 @@ export default function AlertDialog({props}) {
   const [open, setOpen] = React.useState(false);
 
   console.log(props);
-  
+  const handleClickOpenForJoin = () => {
+    props.handlePutJoin(props.groupId, props.email)
+    setOpen(true)
+  }
+  const handleLeaveGroup = () => {
+    props.handleLeaveGroup(props.groupId, props.email)
+    setOpen(true)
+  }
   const handleClickOpen = () => {
     props.handlePutGoing(props.eventId, props.email)
     setOpen(true);
@@ -22,6 +29,36 @@ export default function AlertDialog({props}) {
   const handleClose = () => {
     setOpen(false);
   };
+  if(props.page === 'group'){
+      return (
+        <div>
+          <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpenForJoin} type="submit" >
+            Join
+          </Button>
+          <Button id="alert-button" variant="outlined" color="primary" onClick={handleLeaveGroup} type="submit" >
+            Leave
+          </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title"></DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {`All set! ${props.name} has been updated`}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      );
+  }
 if(props.page==="details") {
   return (
     <div>

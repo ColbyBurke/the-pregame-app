@@ -1,6 +1,9 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import axios from "axios";
 import { TextField } from "@material-ui/core";
+import AlertDialog from "./AlertDialog";
+import { useAuth0 } from "../react-auth0-spa";
+
 
 export const dataReducer = (state, action) => {
   if (action.type === "SET_ERROR") {
@@ -17,19 +20,41 @@ const initialData = {
 };
 
 function GroupDetails(props) {
+  const [name, setName] = useState('')
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { loading, user } = useAuth0();
+  const [member, setMembers] = useState('')
   console.log(props);
   const [data, dispatch] = useReducer(dataReducer, initialData);
   useEffect(() => {
     axios
-      .get("http://localhost:2500/groups")
+      .get(`http://localhost:2500/group/${props.match.params.id}`)
       .then(response => {
         console.log(response);
+        setName(response.data[0].name)
+        setMembers(response.data[0].members)
         dispatch({ type: "SET_LIST", list: response.data });
       })
       .catch(() => {
         dispatch({ type: "SET_ERROR" });
       });
   }, []);
+  const handlePutJoin = (id, email) => {
+    axios.put(`http://localhost:2500/group/${id}`,
+    {members: member.concat(email)}
+  ).then(function(response) {
+    console.log(response);
+  }).catch(function(error) {
+    console.log(error);
+  });}
+  const handleLeaveGroup = (id, email) => {
+    axios.put(`http://localhost:2500/group/${id}`,
+    {members: member.splice(1, email, '')}
+  ).then(function(response) {
+    console.log(response);
+  }).catch(function(error) {
+    console.log(error);
+  });}
   return (
     <div className="group-details-container">
       <h2>
@@ -39,6 +64,7 @@ function GroupDetails(props) {
           .map(group => {
             return (
               <div key={group._id}>
+                <AlertDialog props={{page: 'group', name: name, handlePutJoin, handleLeaveGroup, groupId: group._id, email: user.email}}></AlertDialog>
                 <TextField
                   id="group-details-name"
                   label="Name"
@@ -111,6 +137,8 @@ function GroupDetails(props) {
                   }}
                   variant="outlined"
                 />
+                {console.log(group.members)}
+              <p>Members: {group.members.length}</p>
               </div>
             );
           })}
