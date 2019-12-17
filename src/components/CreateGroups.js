@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
 import AlertDialog from './AlertDialog'
+import { useAuth0 } from "../react-auth0-spa";
 
 
 
 
 function CreateGroups() {
+    const { loading, user } = useAuth0();
     const [name, setName] = useState("")
     const [comments, setComments] = useState([])
     const [events, setEvents] = useState([])
@@ -31,23 +33,19 @@ function CreateGroups() {
             age: age
         })
     }
+    useEffect(() => {
+        setGroupLeader(user.email)
+    },[])
+    if (loading || !user){
+        return <div>Loading...</div>
+    }
+    
         return (
 
             <div className="form-container createGroup">
 
                 <h1>Create your Awesome Group</h1>
-                <form onSubmit= {e => {
-                e.preventDefault()
-                handlePost(
-                    name,
-                    comments,
-                    events,
-                    groupLeader,
-                    description,
-                    age
-                )
-                setClicked(true)
-            }}>
+                <form>
                     <div className="input-container">
 
                         <br></br>
@@ -73,13 +71,7 @@ function CreateGroups() {
 
                         </TextField>
                     </div>
-                    <div className="input-container">
-
-                        <br></br>
-                        <TextField required label="Group Leader" id="group-groupLeader" rows="15" style={{ width: "500px" }} multiline variant="outlined"  onChange={e => setGroupLeader(e.target.value)}>
-
-                        </TextField>
-                    </div>
+                    
                     <div className="input-container">
 
                         <br></br>
@@ -97,7 +89,7 @@ function CreateGroups() {
                     <div className="input-container">
 
                         <br></br>
-                        <AlertDialog props={{name, comments, events, groupLeader, description, age, page: 'group', clicked}}/>
+                        <AlertDialog props={{handlePost, name, comments, events, groupLeader, description, age, page: 'createGroup', clicked}}/>
                     </div>
                 </form>
 
