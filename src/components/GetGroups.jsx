@@ -1,4 +1,4 @@
-import React, {  useEffect, useReducer } from "react";
+import React, {  useEffect, useReducer, useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
@@ -19,6 +19,8 @@ const initialData = {
   error: null
 };
 function GetGroups() {
+  const [filterValue, setFilterValue] = useState('')
+  const [input, setInput] = useState('')
   const [data, dispatch] = useReducer(dataReducer, initialData);
   useEffect(() => {
     axios
@@ -31,6 +33,13 @@ function GetGroups() {
         dispatch({ type: "SET_ERROR" });
       });
   }, []);
+  const callbackFromDropdown = val => {
+    setFilterValue(val);
+  };
+  const callbackFromInputBar = val => {
+    setInput(val);
+  };
+  console.log(input);
   return (
     <div className="displayGroups-container">
       <Card
@@ -39,8 +48,8 @@ function GetGroups() {
         }}
       >
         <h3>Find Your Group :/</h3>
-        <FilterDropdown></FilterDropdown>
-        <InputBar></InputBar>
+        <FilterDropdown parentCallback={callbackFromDropdown}></FilterDropdown>
+        <InputBar parentCallback={callbackFromInputBar}></InputBar>
       </Card>
       <br />
       <Card className="displayGroups-placeholder">
