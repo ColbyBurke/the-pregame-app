@@ -12,13 +12,46 @@ export default function AlertDialog({props}) {
   console.log(props);
   
   const handleClickOpen = () => {
+    props.handlePutGoing(props.eventId, props.email)
     setOpen(true);
   };
-
+  const handleClickOpen2 = () => {
+    props.handlePutNotGoing(props.eventId, props.email)
+    setOpen(true);
+  };
   const handleClose = () => {
     setOpen(false);
   };
-
+if(props.page==="details") {
+  return (
+    <div>
+      <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpen} type="submit" >
+        Going
+      </Button>
+      <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpen2} type="submit" >
+        Not Going
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title"></DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            You have already RSVP'd!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
   return (
     <div>
       <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpen} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.group.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
