@@ -54,7 +54,22 @@ function GetGroups() {
       <br />
       <Card className="displayGroups-placeholder">
         <br />
-        {data.list.map(group => {
+        {data.list.filter(group => {
+          if(filterValue === 'age'){
+            if(parseInt(group.age) > parseInt(input)){
+              return group
+            }
+          }
+          else if(filterValue === 'popular'){
+            if(parseInt(group.members.length) >= 3){
+              return group
+            }
+          }
+          else{
+            return group
+          }
+
+        }).map(group => {
           return (
             <div key={group._id}>
               <Link to={`/group/${group._id}`}>details</Link>
@@ -79,8 +94,8 @@ function GetGroups() {
         />
                 <TextField
           id="outlined-read-only-input"
-          label="Events"
-          defaultValue={group.events}
+          label="groups"
+          defaultValue={group.groups}
           InputProps={{
             readOnly: true
           }}
@@ -141,7 +156,7 @@ export default GetGroups;
 //         />
 //         <TextField
 //           id="outlined-read-only-input"
-//           label="Events"
+//           label="groups"
 //           defaultValue="Hello World"
 //           InputProps={{
 //             readOnly: true
@@ -188,7 +203,7 @@ export default GetGroups;
 //       <br />
 //       <Card className="displayGroups-placeholder">
 //         <h1>Good group</h1>
-//         <Link to="/events/details">details</Link>
+//         <Link to="/groups/details">details</Link>
 //         <TextField
 //           id="outlined-read-only-input"
 //           label="Name"
@@ -209,7 +224,7 @@ export default GetGroups;
 //         />
 //         <TextField
 //           id="outlined-read-only-input"
-//           label="Events"
+//           label="groups"
 //           defaultValue="Hello World"
 //           InputProps={{
 //             readOnly: true
