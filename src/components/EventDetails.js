@@ -39,28 +39,7 @@ function EventDetails(props) {
         dispatch({ type: "SET_ERROR" });
       });
   }, []);
-  const spliceGoing = (id, email) => {
-    setRSVPYES(RSVPYES.splice(1, email, ''))
-    axios.put(`http://localhost:2500/event/${id}`,
-    {RSVPYES: RSVPYES}
-  ).then(function(response) {
-    console.log(response);
-  }).catch(function(error) {
-    console.log(error);
-  });
-  }
-  const spliceNotGoing = (id, email) => {
-    setRSVPNO(RSVPNO.splice(1, email, ''))
 
-    axios.put(`http://localhost:2500/event/${id}`,
-    {RSVPNO: RSVPNO}
-  ).then(function(response) {
-    console.log(response);
-  }).catch(function(error) {
-    console.log(error);
-  });
-  }
- 
   const handlePutGoing = (id, email) => {
     if(RSVPNO.includes(email)){
         setRSVPNO(RSVPNO.splice(1, email))
