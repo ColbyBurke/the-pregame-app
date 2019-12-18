@@ -48,7 +48,6 @@ export default function SimpleSelect({...props}) {
             <em>None</em>
           </MenuItem>
           <MenuItem value={'age'}>Age</MenuItem>
-          <MenuItem value={'upcoming'}>Upcoming</MenuItem>
           <MenuItem value={'popular'}>Popular</MenuItem>
         </Select>
       </FormControl>

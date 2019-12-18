@@ -51,7 +51,8 @@ function GetEvents() {
       >
         <h3>Find Your Event :/</h3>
         <FilterDropdown parentCallback={callbackFromDropdown}></FilterDropdown>
-        <InputBar parentCallback={callbackFromInputBar}></InputBar>
+
+        {filterValue!=="popular" &&<InputBar parentCallback={callbackFromInputBar}></InputBar>}
       </Card>
       <br />
       <Card className="GetEvents-placeholder">
@@ -62,9 +63,15 @@ function GetEvents() {
               return event
             }
           }
+          else if(filterValue === 'popular'){
+            if(parseInt(event.RSVPYES.length) >= parseInt(event.RSVPNO.length)){
+              return event
+            }
+          }
           else{
             return event
           }
+
         }).map(event => {
           return (
             <div key={event._id}>
