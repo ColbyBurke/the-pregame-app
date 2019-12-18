@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TextField } from "@material-ui/core";
+import AlertDialog from './AlertDialog'
 
 function UpdateEvent({ props }) {
     console.log(props)
@@ -103,7 +104,7 @@ function UpdateEvent({ props }) {
         </div>
         <div className="input-container">
           <br></br>
-          <button>Submit</button>
+          <AlertDialog props={{page: 'updated'}}/>
         </div>
       </form>
     </div>

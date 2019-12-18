@@ -48,72 +48,29 @@ export default function AlertDialog({props}) {
   const handleClose = () => {
     setOpen(false);
   };
-  if(props.page === 'group'){
-      return (
-        <div>
-          <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpenForJoin} type="submit" >
-            Join
-          </Button>
-          <Button id="alert-button" variant="outlined" color="primary" onClick={handleLeaveGroup} type="submit" >
-            Leave
-          </Button>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title"></DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                {`All set! ${props.name} has been updated`}
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </div>
-      );
-  }
-if(props.page==="details") {
   return (
     <div>
-      <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpen} type="submit" >
+      {props.page === 'updated' && <Button id="alert-button" variant="outlined" color="primary" onClick={() => setOpen(true)} type="submit" >
+        Apply changes
+      </Button>}
+      {props.page === 'group' && <div><Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpenForJoin} type="submit" >
+        Join
+      </Button>
+      <Button id="alert-button" variant="outlined" color="primary" onClick={handleLeaveGroup} type="submit" >
+        Leave
+      </Button> </div>}
+      {props.page === 'details' && <div><Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpen} type="submit" >
         Going
       </Button>
       <Button id="alert-button" variant="outlined" color="primary" onClick={handleClickOpen2} type="submit" >
         Not Going
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title"></DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            You have already RSVP'd!
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-}
-if(props.page === 'event'){
-  return (
-    <div>
-      <Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateEvent} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
+      </Button> </div>}
+      {props.page === 'event' && <div><Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateEvent} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
         Submit
-      </Button>
+      </Button></div>}
+      {props.page === 'createGroup' && <div><Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateGroup} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.group.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
+        Submit
+      </Button></div>}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -123,8 +80,12 @@ if(props.page === 'event'){
         <DialogTitle id="alert-dialog-title"></DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
+            {props.page === 'group' && `All set! ${props.name} has been updated`}
+            {props.page === 'details' && "You have already RSVP'd!"}
             {props.page === 'event' && 'Event created!'}
-            {props.page === 'group' && 'Group created!'}
+            {props.page === 'createGroup' && 'Group created!'}
+            {props.page === 'updated' && 'Updated!'}
+
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -135,33 +96,5 @@ if(props.page === 'event'){
       </Dialog>
     </div>
   );
-}
-if(props.page === 'createGroup'){
-  return (
-    <div>
-      <Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateGroup} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.group.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
-        Submit
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title"></DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Group Created!
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-}
   
 }
