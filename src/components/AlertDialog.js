@@ -33,7 +33,7 @@ export default function AlertDialog({props}) {
     setOpen(true);
   };
   const handleCreateEvent = () => {
-    props.handlePost(props.name, props.group,
+    props.handlePost(props.name, 
                   props.date,
       props.age,
       props.location,
@@ -111,7 +111,7 @@ if(props.page==="details") {
 if(props.page === 'event'){
   return (
     <div>
-      <Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateEvent} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.group.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
+      <Button id="alert-button" variant="outlined" color="primary" onClick={handleCreateEvent} type="submit" disabled={props.page === 'event' ? !props.name.length || !props.date.length || !props.age.length || !props.images.length ||  !props.description.length || !props.location.length || props.clicked : !props.name.length || !props.comments.length || !props.events.length || !props.groupLeader.length || !props.description.length ||  !props.age.length || props.clicked}>
         Submit
       </Button>
       <Dialog

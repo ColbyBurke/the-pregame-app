@@ -19,9 +19,6 @@ function UpdateGroup({props}) {
 
 
   function handleUpdate(name, comments, events, description, age) {
-      console.log(name)
-      console.log(comments)
-      console.log(props.id)
     axios
       .put(`http://localhost:2500/group/${props.id}`, {
         name: name,

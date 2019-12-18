@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TextField } from '@material-ui/core'
 import axios from 'axios'
 import AlertDialog from './AlertDialog'
+import { useAuth0 } from "../react-auth0-spa";
 
 
 
 function CreateEvents() {
+    const { loading, user } = useAuth0();
     const [name, setName]=useState("")
-    const [group, setGroup]=useState("")
     const [date, setDate]=useState("")
     const [age, setAge]=useState("")
     const [location, setLocation]=useState("")
     const [images, setImages]=useState("")
     const [description, setDescription]=useState("")
     const [clicked, setClicked] = useState(false)
+    const [creator, setCreator] = useState("")
     const handleImage = e => {
         let input = e.target;
         for (let i = 0; i < input.files.length; i++) {
@@ -23,25 +25,29 @@ function CreateEvents() {
           reader.readAsDataURL(input.files[i]);
         }
       };
+
     const handlePost = (
             name,
-            group,
             date,
             age,
             location,
             images,
-            description
+            description,
+            creator
     ) => {
         axios.post("http://localhost:2500/events", {
             name:name,
-            group:group,
             date:date,
             age:age,
             location:location,
             images:images,
-            description:description
+            description:description,
+            creator: creator
         })
     }
+    useEffect(() => {
+        setCreator(user.email)
+    })
     return (
         <div className="form-container">
             <h1>Create your Awesome Event</h1>
@@ -49,12 +55,12 @@ function CreateEvents() {
                 e.preventDefault()
                 handlePost(
                     name,
-                    group,
                     date,
                     age,
                      location,
             images,
-            description
+            description,
+            creator
                 )
                 setClicked(true)
             }}>
@@ -62,13 +68,6 @@ function CreateEvents() {
             
             <br></br>
                     <TextField required label="Event Name" id="event-name" style={{width:"500px"}} onChange={e => setName(e.target.value)}>
-
-                    </TextField>
-                </div>
-                <div className="input-container">
-            
-            <br></br>
-                    <TextField required label="Group" id="event-group" style={{width:"500px"}} onChange={e => setGroup(e.target.value)}>
 
                     </TextField>
                 </div>
@@ -123,7 +122,7 @@ function CreateEvents() {
                 <div className="input-container">
                 
             <br></br>
-            <AlertDialog props={{name, group,            date,
+            <AlertDialog props={{name,            date,
             age,
             location,
             images,

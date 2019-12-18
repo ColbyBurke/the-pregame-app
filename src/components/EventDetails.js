@@ -4,6 +4,8 @@ import { TextField } from "@material-ui/core";
 import Map from "./Map"
 import { useAuth0 } from "../react-auth0-spa";
 import AlertDialog from "./AlertDialog"
+import {Link} from "react-router-dom"
+import UpdateEvent from "./UpdateEvent"
 
 export const dataReducer = (state, action) => {
   if (action.type === "SET_ERROR") {
@@ -26,11 +28,15 @@ function EventDetails(props) {
   const [data, dispatch] = useReducer(dataReducer, initialData);
   const [RSVPYES, setRSVPYES] = useState("")
   const [RSVPNO, setRSVPNO] = useState("")
+  const [creator, setCreator] = useState("")
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:2500/event/${props.match.params.id}`)
       .then(response => {
         console.log(response.data);
+        setCreator(response.data[0].creator)
         setRSVPYES(response.data[0].RSVPYES)
         setRSVPNO(response.data[0].RSVPNO)
         dispatch({ type: "SET_LIST", list: response.data });
@@ -39,6 +45,9 @@ function EventDetails(props) {
         dispatch({ type: "SET_ERROR" });
       });
   }, []);
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:2500/event/${id}`)
+  }
 
   const handlePutGoing = (id, email) => {
     if(RSVPNO.includes(email)){
@@ -74,8 +83,11 @@ function EventDetails(props) {
     
   console.log(RSVPYES)
  
-  if(loading || !user) {
-    return (
+  if(loading || !user){
+    return <div>Loading...</div>
+  }
+  if(creator === user.email){
+  return (
     <div className="event-details-container">
     <h2>
       {" "}
@@ -122,9 +134,7 @@ function EventDetails(props) {
                     event.images[0]
                   } alt="party"/>
                 
-             
-          
-             
+
               <TextField
                 id="event-details-group"
                 label="Group"
@@ -163,14 +173,15 @@ function EventDetails(props) {
               />
                             <p>Going: {event.RSVPYES.length}</p>
               <p>Not Going: {event.RSVPYES.length}</p>
+              <Link to="/"><button onClick={() => handleDelete(event._id)}>Delete</button></Link>
+              <UpdateEvent props={{id: props.match.params.id, name: event.name, date: event.date, age: event.age, location: event.location, description: event.description}}/>
             </div>
-
           );
         })}
     </h2>
   </div>
     )
-  }
+      }
   return (
 
     <div className="event-details-container">
@@ -269,5 +280,6 @@ function EventDetails(props) {
     </div>
   );
 }
+
 
 export default EventDetails;
