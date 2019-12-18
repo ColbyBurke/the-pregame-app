@@ -4,6 +4,7 @@ import axios from "axios";
 import { TextField } from "@material-ui/core";
 import AlertDialog from "./AlertDialog";
 import { useAuth0 } from "../react-auth0-spa";
+import UpdateGroup from "./UpdateGroup"
 
 
 export const dataReducer = (state, action) => {
@@ -36,6 +37,7 @@ function GroupDetails(props) {
         setLeader(response.data[0].groupLeader)
         setName(response.data[0].name)
         setMembers(response.data[0].members)
+
         dispatch({ type: "SET_LIST", list: response.data });
       })
       .catch(() => {
@@ -150,6 +152,7 @@ function GroupDetails(props) {
                 {console.log(group.members)}
               <p>Members: {group.members.length}</p>
               <Link to="/"><button onClick={() => handleDelete(group._id)}>Delete</button></Link>
+              <UpdateGroup props={{id: props.match.params.id, name: group.name, comments: group.comments, events: group.events, description: group.description, age: group.age}}/>
               </div>
             );
           })}

@@ -5,6 +5,10 @@ const EventsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    creator: {
+        type: String,
+        required: true
+    },
     date:{
         type: String,
         required: true
@@ -23,7 +27,7 @@ const EventsSchema = new mongoose.Schema({
     },
     group:{
         type: String,
-        required: true
+        required: false
     },
     age:{
         type: String,
