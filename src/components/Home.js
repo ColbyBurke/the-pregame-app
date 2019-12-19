@@ -51,11 +51,11 @@ function Home() {
           <br></br>
             <br></br>
           <Card>
-              <Link style={{textDecoration:"none", color:"green"}} to="/events"><Button style={{width: "200px", height:"200px"}}>Event</Button></Link>
+              <Link style={{textDecoration:"none", color:"green"}} to="/events"><Button style={{width: "100px", height:"100px"}}>Events</Button></Link>
             </Card>
             <br></br>
             <Card>
-              <Link style={{textDecoration:"none", color:"green"}} to="/events/create"><Button style={{width: "200px", height:"300px"}}>Create Event</Button></Link>
+              <Link style={{textDecoration:"none", color:"green"}} to="/events/create"><Button style={{width: "100px", height:"150px"}}>Create Event</Button></Link>
             </Card>
           </div>
         </div>
@@ -72,11 +72,11 @@ function Home() {
           <br></br>
             <br></br>
             <Card>
-              <Link style={{textDecoration:"none", color:"green"}} to="/groups"><Button style={{width: "200px", height:"200px"}}>Group</Button></Link>
+              <Link style={{textDecoration:"none", color:"green"}} to="/groups"><Button style={{width: "100px", height:"100px"}}>Groups</Button></Link>
             </Card>
             <br></br>
             <Card>
-              <Link style={{textDecoration:"none", color:"green"}} to="/groups/create"><Button style={{width: "200px", height:"300px"}}>Create Group</Button></Link>
+              <Link style={{textDecoration:"none", color:"green"}} to="/groups/create"><Button style={{width: "100px", height:"150px"}}>Create Group</Button></Link>
             </Card>
           </div>
         </div>

@@ -37,7 +37,7 @@ function UpdateEvent({ props }) {
 
   return (
     <div className="form-container">
-      <h1>Create your Awesome Event</h1>
+      <h1>Update your Event</h1>
       <form
         onSubmit={e => {
           e.preventDefault();

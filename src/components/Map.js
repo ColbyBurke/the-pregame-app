@@ -7,8 +7,8 @@ export default function Map({location}){
               style={{
                 position: "relative",
                 textAlign: "right",
-                height: "500px",
-                width: "600px",
+                height: "200px",
+                width: "300px",
                 border: '1px solid #0074D9',
                 boxShadow: '0 0 3px #ccc'
               }}
@@ -19,12 +19,12 @@ export default function Map({location}){
                   overflow: "hidden",
                   background: "none!important",
                   height: "100%",
-                  width: "600px"
+                  width: "300px"
                 }}
               >
                 <iframe
-                  width="600"
-                  height="500"
+                  width="300"
+                  height="200"
                   id="gmap_canvas"
                   src={`https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                   frameBorder="0"

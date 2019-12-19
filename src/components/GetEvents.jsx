@@ -103,7 +103,7 @@ function GetEvents() {
               <p>Creator: {event.creator}</p>
                 </div>
           <div style={{textAlign:"center"}}>
-        <Button variant="outlined"><Link  style={{textDecoration:"none", color:"green"}} to={`/event/${event._id}`}>details</Link></Button>
+        <Button variant="outlined" ><Link  style={{textDecoration:"none", color:"green"}} to={`/event/${event._id}`}>details</Link></Button>
         </div>
         </fieldset>
 
