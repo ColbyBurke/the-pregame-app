@@ -37,7 +37,7 @@ function CreateGroups() {
         setGroupLeader(user.email)
     },[])
     if (loading || !user){
-        return <div>Loading...</div>
+        return <div>Loading ...</div>
     }
     
         return (

@@ -2,8 +2,9 @@ import React, {  useEffect, useReducer, useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
-import { Card, TextField } from "@material-ui/core";
+import { Card, Button } from "@material-ui/core";
 import axios from "axios";
+import {useAuth0} from "../react-auth0-spa" 
 
 export const dataReducer = (state, action) => {
   if (action.type === "SET_ERROR") {
@@ -20,6 +21,7 @@ const initialData = {
 };
 
 function GetEvents() { 
+
    const [filterValue, setFilterValue] = useState('')
    const [input, setInput] = useState('')
   const [data, dispatch] = useReducer(dataReducer, initialData);
@@ -41,21 +43,22 @@ function GetEvents() {
     setInput(val);
   };
   console.log(input);
-  
+
   return (
     <div className="GetEvents-container">
-      <Card
-        style={{
-          width: "540px"
-        }}
-      >
+      <Card className="GetEvents-filter">
+        <div className="filter-event">
         <h3>Find Your Event :/</h3>
         <FilterDropdown parentCallback={callbackFromDropdown}></FilterDropdown>
 
         {filterValue!=="popular" &&<InputBar parentCallback={callbackFromInputBar}></InputBar>}
+        </div>
+        <div className="button-filter-create-event">
+        <Link style={{textDecoration:"none", color:"green"}} to="/events/create"><Button variant="outlined" style={{width: "150px", height:"100px"}}>Create Event</Button></Link>
+        </div>
       </Card>
       <br />
-      <Card className="GetEvents-placeholder">
+      <Card className="each-event-container">
         <br />
         {data.list.filter(event => {
           if(filterValue === 'age'){
@@ -75,89 +78,35 @@ function GetEvents() {
         }).map(event => {
           return (
             <div key={event._id}>
-              <Link to={`/event/${event._id}`}>details</Link>
-              <TextField
-                id="outlined-read-only-input"
-                label="Name"
-                defaultValue={event.name}
-                InputProps={{
-                  readOnly: true
-                }}
-                variant="outlined"
-              />
-            
-                    <TextField
-          id="outlined-read-only-input"
-          label="Comments"
-          defaultValue={event.comments}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                <TextField
-          id="outlined-read-only-input"
-          label="Group"
-          defaultValue={event.group}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                 <TextField
-          id="outlined-read-only-input"
-          label="Location"
-          defaultValue={event.location}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                 <TextField
-          id="outlined-read-only-input"
-          label="Age Range"
-          defaultValue={event.age}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                 <TextField
-          id="outlined-read-only-input"
-          label="Description"
-          defaultValue={event.description}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-              <TextField
-          id="outlined-read-only-input"
-          
-          defaultValue={event.image}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-         <TextField
-          id="outlined-read-only-input"
-          label="Going"
-          defaultValue={event.RSVPYES}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-         <TextField
-          id="outlined-read-only-input"
-          label="Not Going"
-          defaultValue={event.RSVPNO}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
+               <fieldset className="each-event">
+              <div>
+              <h1 style={{textAlign:"center"}}>{event.name}</h1>
+                </div>
+                <div>
+              <h4>{event.description}</h4>
+                </div>
+                <div className="location-date-event">
+              <p className="event-location">{event.location}  </p>
+              <p className="event-date">{event.date}</p>
+                </div>
+                <div>
+              <p>Age: {" "+event.age}</p>
+                </div>
+
+                <div>
+              <p style={{textAlign:"right"}}><span style={{color: "green"}}>{event.RSVPYES.length+" "}</span>ready for {event.name}</p>
+                </div>
+                <div>
+                <p style={{textAlign:"right"}}><span style={{color: "red"}}>{event.RSVPNO.length+" "}</span>ready for {event.name}</p>
+                </div>
+                <div>
+              <p>Creator: {event.creator}</p>
+                </div>
+          <div style={{textAlign:"center"}}>
+        <Button variant="outlined"><Link  style={{textDecoration:"none", color:"green"}} to={`/event/${event._id}`}>details</Link></Button>
+        </div>
+        </fieldset>
+
         </div>
             //<h1>{event.name}</h1>
           );

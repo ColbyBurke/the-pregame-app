@@ -13,6 +13,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link} from 'react-router-dom'
 import NavBar from './NavBar'
+import logo from "../images/jollobanner.png"
 
 
 const useStyles = makeStyles(theme => ({
@@ -163,17 +164,14 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static" >
         <Toolbar>
 
-        <Link className="link"  to="/"><Typography className={classes.title} variant="h6" noWrap>
-            The Pregame App
-          </Typography></Link>
+        <Link   to="/"><img className="logo" src={logo} alt="welcome to or page" /></Link>
           
 
             
 
            
          
-          <Link className="link"  to="/events"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "400px"}}>Event</Typography></Link>
-          <Link className="link"  to="/groups"><Typography className={classes.title} variant="h5" style={{ paddingLeft: "200px" }}>Group</Typography></Link>
+          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>                            
             <IconButton
