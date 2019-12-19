@@ -46,7 +46,7 @@ function CreateEvents() {
         })
     }
     useEffect(() => {
-        setCreator(user.email)
+        setCreator(user.name)
     })
     return (
         <div className="form-container">
