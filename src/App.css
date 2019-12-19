@@ -114,8 +114,43 @@
   flex-direction: column;
   justify-content: space-around;
   /* height: 600px; */
-  border: 1px solid black;
 padding: 10px;
+}
+.button-filter-create-group {
+  display: flex;
+  align-items: center;
+
+}
+.GetGroups-filter {
+
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+
+}
+.each-group {
+  border: 5px solid #3f51b5;
+  border-radius: 10px;
+  width: 400px;
+  margin-top: 20px;
+  margin: 30px;
+  background-color: rgb(177, 199, 245);
+  height: 400px;
+  overflow-y: auto;
+
+}
+.each-group-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.group-details-card2{
+  background-color: rgb(177, 199, 245)!important;
+  border: 5px solid #3f51b5;
+  border-radius: 10px;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 10px!important;
 }
 /*CREATE GROUPS*/
 .form-container form{
