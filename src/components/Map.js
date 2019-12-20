@@ -1,5 +1,7 @@
 import React from 'react'
-export default function Map({location}){
+import JolloMapURL from './testComponents/JolloMapURL'
+
+export function Map({location}){
     console.log(location);
     return (
         <div
@@ -26,7 +28,7 @@ export default function Map({location}){
                   width="300"
                   height="200"
                   id="gmap_canvas"
-                  src={`https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                  src={JolloMapURL(location)}
                   frameBorder="0"
                   scrolling="no"
                   marginHeight="0"
@@ -36,3 +38,5 @@ export default function Map({location}){
             </div>
     )
 }
+
+

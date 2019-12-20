@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useState } from "react";
 import axios from "axios";
 import { TextField } from "@material-ui/core";
-import Map from "./Map";
+import {Map} from "./Map";
 import { useAuth0 } from "../react-auth0-spa";
 import AlertDialog from "./AlertDialog";
 import { Link } from "react-router-dom";
