@@ -5,6 +5,7 @@ import { TextField } from "@material-ui/core";
 import AlertDialog from "./AlertDialog";
 import { useAuth0 } from "../react-auth0-spa";
 import UpdateGroup from "./UpdateGroup"
+import { Card, Button } from "@material-ui/core";
 
 
 export const dataReducer = (state, action) => {
@@ -76,82 +77,30 @@ function GroupDetails(props) {
           .map(group => {
             return (
               <div key={group._id}>
-                <AlertDialog props={{page: 'group', name: name, handlePutJoin, handleLeaveGroup, groupId: group._id, email: user.email}}></AlertDialog>
-                <TextField
-                  id="group-details-name"
-                  label="Name"
-                  defaultValue={group.name}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="group-details-comments"
-                  label="Comments"
-                  defaultValue={group.comments}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="group-details-events"
-                  label="Events"
-                  defaultValue={group.events}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                <TextField
-                  id="group-details-members"
-                  label="Members"
-                  defaultValue={group.members}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                <TextField
-                  id="group-details-ageRange"
-                  label="Age Range"
-                  defaultValue={group.age}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                <TextField
-                  id="group-details-rating"
-                  label="Rating"
-                  defaultValue={group.rating}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                                <TextField
-                  id="group-details-groupLeader"
-                  label="Group Leader"
-                  defaultValue={group.groupLeader}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                                <TextField
-                  id="group-details-description"
-                  label="Description"
-                  defaultValue={group.description}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                {console.log(group.members)}
-              <p>Members: {group.members.length}</p>
-              <Link to="/"><button onClick={() => handleDelete(group._id)}>Delete</button></Link>
+                                <Card
+                  className="event-details-card"
+                  style={{ width: "80%", margin: "0 auto" }}
+                >
+                  <div className="name-age">
+                    <div className="event-details-name">{group.name}</div>
+                  </div>
+
+                  <Card className='event-details-card2' style={{ width: "80%", margin: "0 auto" }}>
+                  <div id="event-details-creator">Creator: {group.groupLeader}</div>
+                  <div className="event-details-age">Required age: {group.age}</div>
+
+                  <div className="event-details-description">
+                    {group.description}
+                  </div>
+                  <p>Members: {group.members.length}</p>
+                  </Card>
+                    <div style={{display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
+                                          <Button variant="outlined" onClick={() => handleDelete(group._id)}>
+                      <Link to='/' style={{textDecoration: 'none', color: 'red'}}>Delete</Link>
+                    </Button>
+                    </div>
+
+                </Card>                
               <UpdateGroup props={{id: props.match.params.id, name: group.name, comments: group.comments, events: group.events, description: group.description, age: group.age}}/>
               </div>
             );
@@ -170,81 +119,30 @@ function GroupDetails(props) {
           .map(group => {
             return (
               <div key={group._id}>
-                <AlertDialog props={{page: 'group', name: name, handlePutJoin, handleLeaveGroup, groupId: group._id, email: user.email}}></AlertDialog>
-                <TextField
-                  id="group-details-name"
-                  label="Name"
-                  defaultValue={group.name}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="group-details-comments"
-                  label="Comments"
-                  defaultValue={group.comments}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                <TextField
-                  id="group-details-events"
-                  label="Events"
-                  defaultValue={group.events}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                <TextField
-                  id="group-details-members"
-                  label="Members"
-                  defaultValue={group.members}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                <TextField
-                  id="group-details-ageRange"
-                  label="Age Range"
-                  defaultValue={group.age}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                <TextField
-                  id="group-details-rating"
-                  label="Rating"
-                  defaultValue={group.rating}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                                <TextField
-                  id="group-details-groupLeader"
-                  label="Group Leader"
-                  defaultValue={group.groupLeader}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                                                <TextField
-                  id="group-details-description"
-                  label="Description"
-                  defaultValue={group.description}
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  variant="outlined"
-                />
-                {console.log(group.members)}
-              <p>Members: {group.members.length}</p>
+                <Card
+                  className="event-details-card"
+                  style={{ width: "80%", margin: "0 auto" }}
+                > 
+                                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
+
+                                     <AlertDialog props={{page: 'group', name: name, handlePutJoin, handleLeaveGroup, groupId: group._id, email: user.email}}></AlertDialog>
+</div>
+                  <div className="name-age">
+
+                    <div className="event-details-name">{group.name}</div>
+                  </div>
+
+                  <Card className='event-details-card2' style={{ width: "80%", margin: "0 auto" }}>
+                  <div id="event-details-creator">Creator: {group.groupLeader}</div>
+                  <div className="event-details-age">Required age: {group.age}</div>
+
+                  <div className="event-details-description">
+                    {group.description}
+                  </div>
+                  <p>Members: {group.members.length}</p>
+                  </Card>
+
+                </Card>  
               
               </div>
             );

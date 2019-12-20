@@ -9,15 +9,15 @@ const NavBar = () => {
   return (
     <div >
       {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect({})}>Log in</button>
+        <MenuItem onClick={() => loginWithRedirect({})} style={{textDecoration: 'none', }}>Log in</MenuItem>
       )}
 
       {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
       <span>
         <MenuItem><Link to="/" style={{width: '100%', height: '100%', textDecoration: 'none', fontStyle: 'none', color: 'black'}}>Home</Link></MenuItem>
         <MenuItem><Link to="/profile" style={{width: '100%', height: '100%', textDecoration: 'none', fontStyle: 'none', color: 'black'}}>Profile</Link></MenuItem>
-        <MenuItem><Link to='/events/create'>Create Event</Link></MenuItem>
-        <MenuItem><Link to="/groups/create">Create Group</Link></MenuItem>
+        <MenuItem><Link to='/events/create' style={{textDecoration: 'none', color: 'black', width: '100%', height: '100%'}}>Create Event</Link></MenuItem>
+        <MenuItem><Link to="/groups/create" style={{textDecoration: 'none', color: 'black', width: '100%', height: '100%'}}>Create Group</Link></MenuItem>
       </span>
     </div>
   );

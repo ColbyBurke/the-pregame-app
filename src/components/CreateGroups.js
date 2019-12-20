@@ -3,7 +3,7 @@ import { TextField } from '@material-ui/core'
 import axios from 'axios'
 import AlertDialog from './AlertDialog'
 import { useAuth0 } from "../react-auth0-spa";
-
+import {Card} from '@material-ui/core'
 
 
 
@@ -43,6 +43,7 @@ function CreateGroups() {
         return (
 
             <div className="form-container createGroup">
+            <Card className="create-events-card" style={{width: "600px", margin: '0 auto'}}>
 
                 <h1>Create your Awesome Group</h1>
                 <form>
@@ -67,7 +68,7 @@ function CreateGroups() {
                     <div className="input-container">
 
                         <br></br>
-                        <TextField required label="Events" id="group-events" rows="15" style={{ width: "500px" }} multiline variant="outlined" onChange={e => setEvents(e.target.value)} >
+                        <TextField required label="Events" id="group-events" rows="3" style={{ width: "500px" }} multiline variant="outlined" onChange={e => setEvents(e.target.value)} >
 
                         </TextField>
                     </div>
@@ -82,7 +83,7 @@ function CreateGroups() {
                     <div className="input-container">
 
                         <br></br>
-                        <TextField required label="Age Range" id="group-age" rows="15" style={{ width: "500px" }} multiline variant="outlined"  onChange={e => setAge(e.target.value)}>
+                        <TextField required label="Age Range" id="group-age" rows="1" style={{ width: "500px" }} multiline variant="outlined"  onChange={e => setAge(e.target.value)}>
 
                         </TextField>
                     </div>
@@ -92,7 +93,7 @@ function CreateGroups() {
                         <AlertDialog props={{handlePost, name, comments, events, groupLeader, description, age, page: 'createGroup', clicked}}/>
                     </div>
                 </form>
-
+            </Card>
             </div>
         )
     }

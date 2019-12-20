@@ -1,7 +1,8 @@
 import React, { useEffect, useReducer } from "react";
-import homePicture from "../images/home-picture.jpg";
-import homePicture2 from "../images/home-picture2.jpg";
-import homePicture3 from "../images/home-picture3.jpg";
+import homePicture4 from "../images/home-picture.jpg";
+import homePicture3 from "../images/social-gathering.jpg";
+import homePicture2 from "../images/couple.jpg";
+import homePicture1 from '../images/social-event.jpg'
 import { Card, Button } from "@material-ui/core";
 import GetEvents from "./GetEvents";
 import axios from "axios";
@@ -61,9 +62,11 @@ function Home() {
         </div>
         <div className="image-home">
           <AwesomeSlider>
-            <div data-src={homePicture} />
+            <div data-src={homePicture1} />
             <div data-src={homePicture2} />
             <div data-src={homePicture3} />
+            <div data-src={homePicture4} />
+
           </AwesomeSlider>
         </div>
         <div className="home-links">

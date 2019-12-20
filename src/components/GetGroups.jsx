@@ -42,17 +42,20 @@ function GetGroups() {
   console.log(input);
   return (
     <div className="displayGroups-container">
-      <Card
-        style={{
-          width: "540px"
-        }}
-      >
-        <h3>Find Your Group :/</h3>
+      <Card className="GetEvents-filter" style={{width: '1000px'}}>
+
+      <div className="filter-event">
+        <h3>Find Your Group</h3>
         <FilterDropdown parentCallback={callbackFromDropdown}></FilterDropdown>
-        <InputBar parentCallback={callbackFromInputBar}></InputBar>
+
+        {filterValue!=="popular" &&<InputBar parentCallback={callbackFromInputBar}></InputBar>}
+        </div>
+        <div className="button-filter-create-event">
+        <Link style={{textDecoration:"none", color:"green"}} to="/group/create"><Button variant="outlined" style={{width: "150px", height:"100px"}}>Create Group</Button></Link>
+        </div>
       </Card>
       <br />
-      <Card className="displayGroups-placeholder">
+      <Card className="each-group-container">
         <br />
         {data.list.filter(group => {
           if(filterValue === 'age'){
@@ -94,29 +97,8 @@ function GetGroups() {
         <Button variant="outlined" ><Link  style={{textDecoration:"none", color:"green"}} to={`/group/${group._id}`}>details</Link></Button>
         </div>
         </fieldset>
-
-              {/* <Link to={`/group/${group._id}`}>details</Link>
-
-              <div className="outlined-read-only-input">
-                {group.name}
-                </div>
-                
-                 <div className="outlined-read-only-input">
-                   {group.description}
-                 </div>
-                 <div className="outlined-read-only-input">
-                   {group.members.length}
-                 </div>
-         
-                 <div className="outlined-read-only-input">
-                   {group.age}
-                 </div>
-                 <div className="outlined-read-only-input">
-                   {group.groupLeader}
-                 </div> */}
          
         </div>
-            //<h1>{group.name}</h1>
           );
         })}
       </Card>
@@ -125,136 +107,3 @@ function GetGroups() {
 }
 export default GetGroups;
 
-// export default function DisplayGroups() {
-//   return (
-//     <div className="displayGroups-container">
-//       <br />
-
-//       <br />
-
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Forum"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="groups"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Members"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Age Range"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Private Forum"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Rating"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//       </Card>
-//       <br />
-//       <Card className="displayGroups-placeholder">
-//         <h1>Good group</h1>
-//         <Link to="/groups/details">details</Link>
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Name"
-//           defaultValue="Name goes here"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Forum"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="groups"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Members"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Age Range"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Private Forum"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//         <TextField
-//           id="outlined-read-only-input"
-//           label="Rating"
-//           defaultValue="Hello World"
-//           InputProps={{
-//             readOnly: true
-//           }}
-//           variant="outlined"
-//         />
-//       </Card>
-//     </div>
-//   );
-// }

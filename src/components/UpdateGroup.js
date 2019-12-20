@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"
 import { TextField } from '@material-ui/core'
 import AlertDialog from './AlertDialog'
+import {Card} from '@material-ui/core'
 
 function UpdateGroup({props}) {
   const [name, setName] = useState("");
@@ -38,6 +39,8 @@ function UpdateGroup({props}) {
 
   return (
     <div className="form-container createGroup">
+      <Card style={{ width: "80%", margin: "0 auto" }}>
+
       <h1>Update your group</h1>
       <form
         onSubmit={e => {
@@ -75,7 +78,7 @@ function UpdateGroup({props}) {
             label="Events"
             id="group-events"
             defaultValue={props.events}
-            rows="15"
+            rows="3"
             style={{ width: "500px" }}
             multiline
             variant="outlined"
@@ -104,7 +107,7 @@ function UpdateGroup({props}) {
             label="Age Range"
             id="group-age"
             defaultValue={props.age}
-            rows="15"
+            rows="1"
             style={{ width: "500px" }}
             multiline
             variant="outlined"
@@ -116,6 +119,8 @@ function UpdateGroup({props}) {
           <AlertDialog props={{page: 'updated'}}/>
         </div>
       </form>
+      </Card>
+
     </div>
   );
 }
