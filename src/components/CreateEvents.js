@@ -3,6 +3,7 @@ import { TextField } from '@material-ui/core'
 import axios from 'axios'
 import AlertDialog from './AlertDialog'
 import { useAuth0 } from "../react-auth0-spa";
+import {Card} from '@material-ui/core'
 
 
 
@@ -50,6 +51,8 @@ function CreateEvents() {
     })
     return (
         <div className="form-container">
+            <Card className="create-events-card" style={{width: "600px", margin: '0 auto'}}>
+
             <h1>Create your Awesome Event</h1>
             <form onSubmit= {e => {
                 e.preventDefault()
@@ -131,6 +134,8 @@ function CreateEvents() {
                     {/* <button className="go" ><span>Go</span></button> */}
                 </div>
             </form>
+            </Card>
+
         </div>
     )
 }
