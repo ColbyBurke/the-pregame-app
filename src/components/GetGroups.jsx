@@ -2,7 +2,7 @@ import React, {  useEffect, useReducer, useState } from "react";
 import FilterDropdown from "./FilterDropdown";
 import InputBar from "./InputBar";
 import { Link } from "react-router-dom";
-import { Card, TextField } from "@material-ui/core";
+import { Card, Button } from "@material-ui/core";
 import axios from "axios";
 
 export const dataReducer = (state, action) => {
@@ -72,62 +72,49 @@ function GetGroups() {
         }).map(group => {
           return (
             <div key={group._id}>
-              <Link to={`/group/${group._id}`}>details</Link>
-              <TextField
-                id="outlined-read-only-input"
-                label="Name"
-                defaultValue={group.name}
-                InputProps={{
-                  readOnly: true
-                }}
-                variant="outlined"
-              />
-            
-                    <TextField
-          id="outlined-read-only-input"
-          label="Comments"
-          defaultValue={group.comments}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                <TextField
-          id="outlined-read-only-input"
-          label="groups"
-          defaultValue={group.groups}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                 <TextField
-          id="outlined-read-only-input"
-          label="Members"
-          defaultValue={group.members}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                 <TextField
-          id="outlined-read-only-input"
-          label="Age Range"
-          defaultValue={group.age !== undefined ? group.age : null}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
-                 <TextField
-          id="outlined-read-only-input"
-          label="Rating"
-          defaultValue={group.rating !== undefined ? group.rating: null}
-          InputProps={{
-            readOnly: true
-          }}
-          variant="outlined"
-        />
+
+              <fieldset className="each-group">
+              <div>
+              <h1 style={{textAlign:"center"}}>{group.name}</h1>
+                </div>
+                <div>
+              <h4>{group.description}</h4>
+                </div>
+                <div className="location-date-group">
+              <p className="group-location">{group.location}  </p>
+              <p className="group-date">{group.date}</p>
+                </div>
+                <div>
+              <p>Age: {" "+group.age}</p>
+                </div>
+                <div>
+              <p>Group Leader: {group.groupLeader}</p>
+                </div>
+          <div style={{textAlign:"center"}}>
+        <Button variant="outlined" ><Link  style={{textDecoration:"none", color:"green"}} to={`/group/${group._id}`}>details</Link></Button>
+        </div>
+        </fieldset>
+
+              {/* <Link to={`/group/${group._id}`}>details</Link>
+
+              <div className="outlined-read-only-input">
+                {group.name}
+                </div>
+                
+                 <div className="outlined-read-only-input">
+                   {group.description}
+                 </div>
+                 <div className="outlined-read-only-input">
+                   {group.members.length}
+                 </div>
+         
+                 <div className="outlined-read-only-input">
+                   {group.age}
+                 </div>
+                 <div className="outlined-read-only-input">
+                   {group.groupLeader}
+                 </div> */}
+         
         </div>
             //<h1>{group.name}</h1>
           );
