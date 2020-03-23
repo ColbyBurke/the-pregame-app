@@ -19,6 +19,8 @@ function CreateEvents() {
     const [creator, setCreator] = useState("")
     const handleImage = e => {
         let input = e.target;
+        console.log(input);
+        
         for (let i = 0; i < input.files.length; i++) {
           let reader = new FileReader();
           reader.onload = b =>
